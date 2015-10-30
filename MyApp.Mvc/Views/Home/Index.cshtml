@@ -1,0 +1,73 @@
+﻿@model MyApp.Mvc.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>MVC Helpers</h2>
+    <p class="lead">Encriptando Ids automaticamente.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>EncryptedInt teste</h2>
+        <p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Propriedade</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>DisplayFor</td>
+                        <td>@Html.DisplayFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>DisplayNameFor</td>
+                        <td>@Html.DisplayNameFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>DisplayTextFor</td>
+                        <td>@Html.DisplayTextFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>LabelFor</td>
+                        <td>@Html.LabelFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>NameFor</td>
+                        <td>@Html.NameFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>TextBoxFor</td>
+                        <td>@Html.TextBoxFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>EditorFor</td>
+                        <td>@Html.EditorFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>ValueFor</td>
+                        <td>@Html.ValueFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>HiddenFor</td>
+                        <td>@Html.HiddenFor(m => m.IdTest1)</td>
+                    </tr>
+                    <tr>
+                        <td>ActionLink</td>
+                        <td>
+                            @Html.ActionLink("Link com IdTest1", "Index", new { IdTest1 = Model.IdTest1 })
+                            <br />
+                            @Html.ActionLink("Link com IdTest1", "Index", new { IdTest1 = Model.IdTest1 }).ToHtmlString()
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+    </div>
+
+</div>
