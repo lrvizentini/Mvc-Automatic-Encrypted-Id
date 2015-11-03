@@ -36,9 +36,9 @@ namespace MvcHelpers.CustomModelBinders
             catch (FormatException e)
             {
                 modelState.Errors.Add(e);
+                bindingContext.ModelState.Add(bindingContext.ModelName, modelState);
             }
 
-            bindingContext.ModelState.Add(bindingContext.ModelName, modelState);
             return actualValue;
         }
     }
@@ -71,9 +71,9 @@ namespace MvcHelpers.CustomModelBinders
             catch (FormatException e)
             {
                 modelState.Errors.Add(e);
+                bindingContext.ModelState.Add(bindingContext.ModelName, modelState);
             }
 
-            bindingContext.ModelState.Add(bindingContext.ModelName, modelState);
             return actualValue;
         }
     }

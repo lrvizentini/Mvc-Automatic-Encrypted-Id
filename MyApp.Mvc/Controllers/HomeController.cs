@@ -18,8 +18,8 @@ namespace MyApp.Mvc.Controllers
             int id1 = 110;
             long id2 = 23304;
 
-            model.IdTest1 = id1;
-            model.IdTest2 = id2;
+            model.IntIdTest = id1;
+            model.LongIdTest = id2;
 
             return View(model);
         }
@@ -27,9 +27,17 @@ namespace MyApp.Mvc.Controllers
         [HttpPost]
         public ActionResult Index(IndexViewModel model)
         {
-            model.IdTest1 += 10;
+            model.IntIdTest = (10 + model.IntIdTest);
 
             return View(model);
         }
+
+        public JsonResult GetIntValueFromEncrypted(EncryptedInt id)
+        {
+            int intValue = id;
+
+            return Json(intValue, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

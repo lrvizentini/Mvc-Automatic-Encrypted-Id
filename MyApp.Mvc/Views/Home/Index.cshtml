@@ -16,25 +16,25 @@
 </ul>
 <div id="tab-content" class="tab-content">
     <div class="tab-pane active" id="post">
-        <h1>Red</h1>
+        <h2>Post and add 1 to the value</h2>
+
         @using (Html.BeginForm())
         {
-            <div class="form-group">
+        <div class="form-group">
 
-                @Html.LabelFor(m => m.IdTest1)
-                @Html.TextBoxFor(m => m.IdTest1)
-                @Html.TextBox("asd", Model.IdTest1.ToString())
-                <br />
-                @Model.IdTest1.ToString()
+            @Html.LabelFor(m => m.IntIdTest)
+            @Html.TextBoxFor(m => m.IntIdTest)
+            <br />
 
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.IdTest2)
-                @Html.TextBoxFor(m => m.IdTest2)
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LongIdTest)
+            @Html.TextBoxFor(m => m.LongIdTest)
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
         }
     </div>
+
     <div class="tab-pane" id="usage">
         <h2>EncryptedInt teste</h2>
         <p>
@@ -48,46 +48,53 @@
                 <tbody>
                     <tr>
                         <td>DisplayFor</td>
-                        <td>@Html.DisplayFor(m => m.IdTest1)</td>
+                        <td>@Html.DisplayFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>DisplayNameFor</td>
-                        <td>@Html.DisplayNameFor(m => m.IdTest1)</td>
+                        <td>@Html.DisplayNameFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>DisplayTextFor</td>
-                        <td>@Html.DisplayTextFor(m => m.IdTest1)</td>
+                        <td>@Html.DisplayTextFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>LabelFor</td>
-                        <td>@Html.LabelFor(m => m.IdTest1)</td>
+                        <td>@Html.LabelFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>NameFor</td>
-                        <td>@Html.NameFor(m => m.IdTest1)</td>
+                        <td>@Html.NameFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>TextBoxFor</td>
-                        <td>@Html.TextBoxFor(m => m.IdTest1)</td>
+                        <td>@Html.TextBoxFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>EditorFor</td>
-                        <td>@Html.EditorFor(m => m.IdTest1)</td>
+                        <td>@Html.EditorFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>ValueFor</td>
-                        <td>@Html.ValueFor(m => m.IdTest1)</td>
+                        <td>@Html.ValueFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>HiddenFor</td>
-                        <td>@Html.HiddenFor(m => m.IdTest1)</td>
+                        <td>@Html.HiddenFor(m => m.IntIdTest)</td>
                     </tr>
                     <tr>
                         <td>ActionLink</td>
                         <td>
-                            @Html.ActionLink("Link com IdTest1", "Index", new { IdTest1 = Model.IdTest1 })
+                            @Html.ActionLink("Link com IntIdTest", "Index", new { IntIdTest = Model.IntIdTest })
                             <br />
-                            @Html.ActionLink("Link com IdTest1", "Index", new { IdTest1 = Model.IdTest1 }).ToHtmlString()
+                            @Html.ActionLink("Link com IntIdTest", "Index", new { IntIdTest = Model.IntIdTest }).ToHtmlString()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Load int value ajax</td>
+                        <td>
+                            <a href="#" onclick="javascript:loadIntValue('@Model.IntIdTest','loadintValueSpan')">Load value</a>
+                            <span class="text-info" id="loadintValueSpan"></span>
                         </td>
                     </tr>
                 </tbody>
@@ -99,3 +106,19 @@
         <p>red red red red red red</p>
     </div>
 </div>
+
+
+@section scripts{
+
+
+    <script>
+
+        function loadIntValue(encryptedValue, setValueToElement) {
+            $.getJSON('/Home/GetIntValueFromEncrypted', { id: encryptedValue }, function (data, status, xhr) {
+                $('#' + setValueToElement).html(data);
+            });
+        }
+
+    </script>
+
+}

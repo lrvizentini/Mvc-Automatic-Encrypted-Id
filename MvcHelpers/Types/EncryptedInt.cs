@@ -11,7 +11,7 @@ namespace MvcHelpers.Types
     public struct EncryptedInt  //: IComparable, IFormattable, IConvertible, IComparable<int>, IEquatable<int>
     {
 
-       
+
         public EncryptedInt(int n)
         {
             _value = n;
@@ -27,20 +27,26 @@ namespace MvcHelpers.Types
         }
 
         private int _value;
-        public int Value
-        {
-            get { return _value; }
-            set
-            {
-                _value = value;
-            }
-        }
 
-        public string Encrypted { get { return GetEncryptedValue(); } }
+        //public int Value
+        //{
+        //    get { return _value; }
+        //    set
+        //    {
+        //        _value = value;
+        //    }
+        //}
 
-        private string GetEncryptedValue()
+        //public string Encrypted { get { return GetEncryptedValue(); } }
+
+        public string GetEncryptedValue()
         {
             return _value > 0 ? EncryptHelper.Encrypt(_value) : "";
+        }
+
+        public int GetValue()
+        {
+            return _value ;
         }
 
         public static implicit operator EncryptedInt(int value)
@@ -55,6 +61,11 @@ namespace MvcHelpers.Types
             return value._value;
         }
 
+        public static EncryptedInt operator +(EncryptedInt value1, EncryptedInt value2)
+        {
+            return new EncryptedInt(value1._value + value2._value);
+        }
+        
         public static implicit operator string(EncryptedInt value)
         {
             return value.ToString();
