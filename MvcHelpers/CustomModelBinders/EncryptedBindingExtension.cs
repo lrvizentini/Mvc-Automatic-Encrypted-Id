@@ -13,7 +13,8 @@ namespace MvcHelpers.CustomModelBinders
         public static void UseCustomBinders()
         {
             ModelBinders.Binders.Add(typeof(EncryptedInt), new EncryptedIntModelBinder());
-            ModelBinders.Binders.Add(typeof(EncryptedLong), new EncryptedIntModelBinder());
+            ModelBinders.Binders.Add(typeof(EncryptedLong), new EncryptedLongModelBinder());
         }
+
     }
 }

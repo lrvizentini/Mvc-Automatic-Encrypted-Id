@@ -10,6 +10,8 @@ namespace MvcHelpers.Types
 {
     public struct EncryptedInt  //: IComparable, IFormattable, IConvertible, IComparable<int>, IEquatable<int>
     {
+
+       
         public EncryptedInt(int n)
         {
             _value = n;
@@ -33,6 +35,8 @@ namespace MvcHelpers.Types
                 _value = value;
             }
         }
+
+        public string Encrypted { get { return GetEncryptedValue(); } }
 
         private string GetEncryptedValue()
         {

@@ -1,4 +1,5 @@
-﻿using MyApp.Mvc.Models;
+﻿using MvcHelpers.Types;
+using MyApp.Mvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace MyApp.Mvc.Controllers
         {
             var model = new IndexViewModel();
 
-            int id1 = 100;
+            int id1 = 110;
             long id2 = 23304;
 
             model.IdTest1 = id1;
@@ -24,9 +25,11 @@ namespace MyApp.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(int id)
+        public ActionResult Index(IndexViewModel model)
         {
-            return View();
+            model.IdTest1 += 10;
+
+            return View(model);
         }
     }
 }

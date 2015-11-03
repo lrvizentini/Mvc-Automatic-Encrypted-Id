@@ -9,8 +9,33 @@
     <p class="lead">Encriptando Ids automaticamente.</p>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a data-toggle="tab" href="#post">Post</a></li>
+    <li role="presentation"><a data-toggle="tab" href="#usage">Utilização</a></li>
+    <li role="presentation"><a data-toggle="tab" href="#ajax">Ajax</a></li>
+</ul>
+<div id="tab-content" class="tab-content">
+    <div class="tab-pane active" id="post">
+        <h1>Red</h1>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.IdTest1)
+                @Html.TextBoxFor(m => m.IdTest1)
+                @Html.TextBox("asd", Model.IdTest1.ToString())
+                <br />
+                @Model.IdTest1.ToString()
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.IdTest2)
+                @Html.TextBoxFor(m => m.IdTest2)
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        }
+    </div>
+    <div class="tab-pane" id="usage">
         <h2>EncryptedInt teste</h2>
         <p>
             <table class="table table-striped">
@@ -69,5 +94,8 @@
             </table>
         </p>
     </div>
-
+    <div class="tab-pane" id="ajax">
+        <h1>Ajax</h1>
+        <p>red red red red red red</p>
+    </div>
 </div>
